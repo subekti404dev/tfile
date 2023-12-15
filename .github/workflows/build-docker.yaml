@@ -25,6 +25,9 @@ jobs:
         run: |
           ls -lah
           . .env
+          cat .env
+          echo "DOCKERHUB_USERNAME: $DOCKERHUB_USERNAME"
+          echo "DOCKERHUB_TOKEN: $DOCKERHUB_TOKEN"
 
       - name: Debug Environment Variables
         run: |

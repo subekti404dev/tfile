@@ -9,31 +9,25 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Use reusable workflow from another repo with input
-        uses: subekti404dev/tra@v1
-        with:
-          who-to-greet: 'Urip'
-
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
+      # - name: Download env
+      #   uses: subekti404dev/github-action-urvault@v1
+      #   with:
+      #     baseurl: ${{ secrets.URVAULT_URL }}
+      #     token: ${{ secrets.URVAULT_TOKEN }}
+      #     id: m8jc2d8r53
+      #     filename: .env
+      #     type: dotenv
+
       - name: Download env
-        uses: subekti404dev/github-action-urvault@v1
+        uses: subekti404dev/urvault-action@v1
         with:
           baseurl: ${{ secrets.URVAULT_URL }}
           token: ${{ secrets.URVAULT_TOKEN }}
           id: m8jc2d8r53
           filename: .env
-          type: dotenv
-
-      - name: Set Environment Variables
-        id: set-env
-        run: |
-          while IFS= read -r line || [[ -n "$line" ]]; do
-            var_name=$(echo "$line" | cut -d '=' -f 1)
-            var_value=$(echo "$line" | cut -d '=' -f 2-)
-            echo "::add-mask::$var_value"
-          done < .env
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3

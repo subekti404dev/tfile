@@ -24,7 +24,7 @@ jobs:
       - name: Set Environment Variables
         id: set-env
         run: |
-          while IFS= read -r line; do
+          while IFS= read -r line || [[ -n "$line" ]]; do
             echo "$line" >> $GITHUB_ENV
           done < .env
 

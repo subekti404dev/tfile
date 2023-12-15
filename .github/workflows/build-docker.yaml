@@ -10,9 +10,9 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Use reusable workflow from another repo with input
-        uses: subekti404dev/tra@main
+        uses: subekti404dev/tra@v1
         with:
-          message: "Hello from my project!"
+          who-to-greet: 'Urip'
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1

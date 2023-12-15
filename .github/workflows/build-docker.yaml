@@ -15,9 +15,7 @@ jobs:
       - name: Download env
         uses: subekti404dev/urvault-action@v1
         with:
-          baseurl: ${{ secrets.URVAULT_URL }}
-          token: ${{ secrets.URVAULT_TOKEN }}
-          id: m8jc2d8r53
+          secret: ${{ secrets.URVAULT_SECRET }}
           filename: env.json
           type: json
 

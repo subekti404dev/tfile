@@ -13,10 +13,6 @@ jobs:
         uses: subekti404dev/urvault-action@v1
         with:
           secret: ${{ secrets.URVAULT_SECRET }}
-          filename: env.json
-          type: json
-
-      - run: cat env.json
 
       - name: Docker Build
         uses: subekti404dev/docker-build-action@v1

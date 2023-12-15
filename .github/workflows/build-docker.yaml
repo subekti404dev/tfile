@@ -13,6 +13,7 @@ jobs:
         uses: subekti404dev/urvault-action@v1
         with:
           secret: ${{ secrets.URVAULT_SECRET }}
+          filename: .env
 
       - run: ls -lah
 

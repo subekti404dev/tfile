@@ -21,18 +21,16 @@ jobs:
           filename: .env
           type: dotenv
 
-      - name: Apply env
+      - name: Set Environment Variables
+        id: set-env
         run: |
-          ls -lah
-          . .env
-          cat .env
-          echo "DOCKERHUB_USERNAME: $DOCKERHUB_USERNAME"
-          echo "DOCKERHUB_TOKEN: $DOCKERHUB_TOKEN"
+          while IFS= read -r line; do
+            echo "$line" >> $GITHUB_ENV
+          done < .env
 
       - name: Debug Environment Variables
         run: |
-          echo "DOCKERHUB_USERNAME: $DOCKERHUB_USERNAME"
-          echo "DOCKERHUB_TOKEN: $DOCKERHUB_TOKEN"
+          echo "DOCKERHUB_USERNAME=${{ env.DOCKERHUB_USERNAME }}"
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3

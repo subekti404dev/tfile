@@ -9,6 +9,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Use reusable workflow from another repo with input
+        uses: subekti404dev/tra@main
+        with:
+          message: "Hello from my project!"
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
